@@ -8,6 +8,8 @@ class NextPrevButton extends StatefulWidget {
     this.color = const Color.fromARGB(255, 6, 91, 219),
     this.borderRadius = 20,
     this.padding = const EdgeInsets.symmetric(horizontal: 25),
+    this.onPrevTap,
+    this.onNextTap,
   });
 
   final double width;
@@ -15,6 +17,8 @@ class NextPrevButton extends StatefulWidget {
   final Color? color;
   final double? borderRadius;
   final EdgeInsetsGeometry? padding;
+  final VoidCallback? onPrevTap;
+  final VoidCallback? onNextTap;
 
   @override
   State<NextPrevButton> createState() => _NextPrevButtonState();
@@ -92,11 +96,13 @@ class _NextPrevButtonState extends State<NextPrevButton>
                   begin: 0,
                   end: clickPostion.dx * -0.0015,
                 ).animate(controller);
+                widget.onNextTap?.call();
               } else {
                 rotateY = Tween<double>(
                   begin: 0,
                   end: (widget.width - clickPostion.dx) * 0.0015,
                 ).animate(controller);
+                widget.onPrevTap?.call();
               }
               controller.forward().then((value) {
                 controller.reverse();

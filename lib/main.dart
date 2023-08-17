@@ -33,6 +33,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: NextPrevButton(
           width: MediaQuery.of(context).size.width * .55,
           height: 70,
+          onPrevTap: () {
+            print("Prev");
+          },
+          onNextTap: () {
+            print("Next");
+          },
         ),
       ),
     );
