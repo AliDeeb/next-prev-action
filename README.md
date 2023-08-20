@@ -1,9 +1,9 @@
 # Next Prev Action
 next prev action is a flutter widget that presents a 3d button with callbacks for previous and next step.
 
+## Example
 https://github.com/AliDeeb/next-prev-action/assets/47333501/f66b5c02-82df-49d7-9c0d-bafd27a2c9f7
 
-## Example
 ```
 NextPrevButton(
           width: MediaQuery.of(context).size.width * .55,
