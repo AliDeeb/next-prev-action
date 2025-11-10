@@ -37,7 +37,7 @@ jobs:
           flutter clean
           flutter pub get
           flutter --version
-          flutter build ios --no-codesign
+          flutter build ipa --no-codesign
       - name: Retrieve Release Version
         id: versionstep
         run: |
@@ -46,6 +46,6 @@ jobs:
       - name: Upload the IPA onto Github
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/ios/iphoneos/*.app"
+          artifacts: "build/ios/ipa/*.ipa"
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: "ipa-v${{ steps.versionstep.outputs.VERSION }}"
