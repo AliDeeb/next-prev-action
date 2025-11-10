@@ -25,7 +25,7 @@ jobs:
         with:
           artifacts: "build/app/outputs/flutter-apk/*.apk"
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ steps.versionstep.outputs.VERSION }}
+          tag: "android-v${{ steps.versionstep.outputs.VERSION }}"
 
   buid_ios:
     name: "Flutter build (iOS)"
@@ -46,6 +46,6 @@ jobs:
       - name: Upload the IPA onto Github
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/ios/ipa/*.ipa"
+          artifacts: "build/ios/iphoneos/*.app"
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ steps.versionstep.outputs.VERSION }}
+          tag: "ipa-v${{ steps.versionstep.outputs.VERSION }}"
