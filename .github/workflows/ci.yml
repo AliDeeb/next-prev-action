@@ -37,7 +37,7 @@ jobs:
           flutter clean
           flutter pub get
           flutter --version
-          flutter build ios --no-codesign
+          flutter build ipa --no-codesign
       - name: Retrieve Release Version
         id: versionstep
         run: |
