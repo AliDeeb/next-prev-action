@@ -10,10 +10,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: kuhnroyal/flutter-fvm-config-action/setup@v3
-      - run: flutter clean
-      - run: flutter pub get
-      - run: flutter --version
-      - run: flutter build apk
+      - run: |
+          flutter clean
+          flutter pub get
+          flutter --version
+          flutter build apk
+      - name: Upload the APK onto Github
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/flutter-apk/*.apk"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   buid_ios:
     name: "Flutter build (iOS)"
@@ -21,7 +27,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: kuhnroyal/flutter-fvm-config-action/setup@v3
-      - run: flutter clean
-      - run: flutter pub get
-      - run: flutter --version
-      - run: flutter build ios --no-codesign
+      - run: |
+          flutter clean
+          flutter pub get
+          flutter --version
+          flutter build ios --no-codesign
+      - name: Upload the IPA onto Github
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/ios/ipa/*.ipa"
+          token: ${{ secrets.GITHUB_TOKEN }}
